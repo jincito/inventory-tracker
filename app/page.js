@@ -58,9 +58,9 @@ export default function Home() {
       const { quantity } = docSnap.data();
       if (quantity >= 1) {
         await setDoc(docRef, { quantity: quantity + 1 });
-      } else {
-        await setDoc(docRef, { quantity: 1 });
       }
+    } else {
+      await setDoc(docRef, { quantity: 1 });
     }
 
     await updateInventory();
@@ -167,6 +167,9 @@ export default function Home() {
               <Typography variant={"h3"} color={"#333"} textAlign={"center"}>
                 Quantity: {quantity}
               </Typography>
+              <Button variant="contained" onClick={() => addItem(name)}>
+                Add
+              </Button>
               <Button variant="contained" onClick={() => removeItem(name)}>
                 Remove
               </Button>
